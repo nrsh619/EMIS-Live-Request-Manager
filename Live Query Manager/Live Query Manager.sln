@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveQueryManager.API", "LiveQueryManager.API\LiveQueryManager.API.csproj", "{427E8498-36D3-4AF7-801B-D9EB36B74BAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{427E8498-36D3-4AF7-801B-D9EB36B74BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{427E8498-36D3-4AF7-801B-D9EB36B74BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{427E8498-36D3-4AF7-801B-D9EB36B74BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{427E8498-36D3-4AF7-801B-D9EB36B74BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09969B96-588E-46C0-B0C8-BBF3330A76B7}
+	EndGlobalSection
+EndGlobal
