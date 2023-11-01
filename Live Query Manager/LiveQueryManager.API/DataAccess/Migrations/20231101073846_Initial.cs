@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LiveQueryManager.API.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,9 +51,8 @@ namespace LiveQueryManager.API.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
                     Path = table.Column<string>(type: "text", nullable: false),
-                    LiveDataRequestId = table.Column<int>(type: "integer", nullable: true)
+                    LiveDataRequestId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,7 +61,8 @@ namespace LiveQueryManager.API.DataAccess.Migrations
                         name: "FK_Attachments_LiveDataRequests_LiveDataRequestId",
                         column: x => x.LiveDataRequestId,
                         principalTable: "LiveDataRequests",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

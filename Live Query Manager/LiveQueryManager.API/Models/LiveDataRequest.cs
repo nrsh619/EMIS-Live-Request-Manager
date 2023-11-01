@@ -6,7 +6,7 @@
 		public string CreatedBy { get; set; }
 		public string Title { get; set;}
 		public Status Status { get; set;}
-		public List<Attachment> Attachments { get; set;}
+		public virtual List<Attachment> Attachments { get; set;}
     }
 
 	public class Status
@@ -19,5 +19,6 @@
 	{
         public int Id { get; set; }
 		public string Path { get; set; }
+        public virtual LiveDataRequest LiveDataRequest { get; set; }
     }
 }
