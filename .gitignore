@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Live Query Manager/.vs
+/Live Query Manager/LiveQueryManager.API/bin/Debug/net7.0
+/Live Query Manager/LiveQueryManager.API/obj/Debug/net7.0
+/Live Query Manager/LiveQueryManager.API/obj/Release/net7.0
+/Live Query Manager/LiveQueryManager.API/obj
