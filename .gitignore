@@ -8,3 +8,7 @@
 /Live Query Manager/LiveQueryManager.API/obj/Debug/net7.0
 /Live Query Manager/LiveQueryManager.API/obj/Release/net7.0
 /Live Query Manager/LiveQueryManager.API/obj
+/Live Query Manager/LiveQueryManager.DataAccess/bin/Debug/net7.0
+/Live Query Manager/LiveQueryManager.Models/bin/Debug/net7.0
+/Live Query Manager/LiveQueryManager.Models/obj
+/Live Query Manager/LiveQueryManager.DataAccess/obj

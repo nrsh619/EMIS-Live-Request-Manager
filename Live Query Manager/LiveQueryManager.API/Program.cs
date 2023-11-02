@@ -1,5 +1,5 @@
 
-using LiveQueryManager.API.DataAccess;
+using LiveQueryManager.DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace LiveQueryManager.API

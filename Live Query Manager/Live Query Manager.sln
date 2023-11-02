@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveQueryManager.API", "LiveQueryManager.API\LiveQueryManager.API.csproj", "{427E8498-36D3-4AF7-801B-D9EB36B74BAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveQueryManager.API", "LiveQueryManager.API\LiveQueryManager.API.csproj", "{427E8498-36D3-4AF7-801B-D9EB36B74BAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveQueryManager.Models", "LiveQueryManager.Models\LiveQueryManager.Models.csproj", "{77F15B1F-AAD8-4950-A474-461A4A24AA73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveQueryManager.DataAccess", "LiveQueryManager.DataAccess\LiveQueryManager.DataAccess.csproj", "{0D561F91-DC68-46C4-B444-8897622BC724}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{427E8498-36D3-4AF7-801B-D9EB36B74BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{427E8498-36D3-4AF7-801B-D9EB36B74BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{427E8498-36D3-4AF7-801B-D9EB36B74BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77F15B1F-AAD8-4950-A474-461A4A24AA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77F15B1F-AAD8-4950-A474-461A4A24AA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77F15B1F-AAD8-4950-A474-461A4A24AA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77F15B1F-AAD8-4950-A474-461A4A24AA73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D561F91-DC68-46C4-B444-8897622BC724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D561F91-DC68-46C4-B444-8897622BC724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D561F91-DC68-46C4-B444-8897622BC724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D561F91-DC68-46C4-B444-8897622BC724}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
