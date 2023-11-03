@@ -53,12 +53,12 @@ namespace LiveQueryManager.DataAccess.DA
 
 		public async Task<List<LiveDataRequest>> GetAllLiveDataRequest()
 		{
-			return await _liveQueryManagerDbContext.LiveDataRequests.ToListAsync();
+			return await _liveQueryManagerDbContext.LiveDataRequests.Where(a=> !a.IsDeleted).ToListAsync();
 		}
 
 		public async Task<LiveDataRequest> GetLiveDataRequestByRequestId(int requestId)
 		{
-			return await _liveQueryManagerDbContext.LiveDataRequests.Where(a => a.RequestId == requestId)
+			return await _liveQueryManagerDbContext.LiveDataRequests.Where(a => a.RequestId == requestId && !a.IsDeleted)
 							.Select(a => new LiveDataRequest
 							{
 								RequestId = a.RequestId,
