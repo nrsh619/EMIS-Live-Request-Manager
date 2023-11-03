@@ -27,7 +27,7 @@ namespace LiveQueryManager.API.Controllers
 		}
 
 		[HttpGet("{requestId}")]
-		public async Task<List<LiveDataRequest>> GetAllRequestByRequestId(int requestId)
+		public async Task<LiveDataRequest> GetAllRequestByRequestId(int requestId)
 		{
 			return await _liveRequestDA.GetLiveDataRequestByRequestId(requestId);
 		}

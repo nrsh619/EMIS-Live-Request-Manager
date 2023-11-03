@@ -56,15 +56,19 @@ namespace LiveQueryManager.DataAccess.DA
 			return await _liveQueryManagerDbContext.LiveDataRequests.ToListAsync();
 		}
 
-		public async Task<List<LiveDataRequest>> GetLiveDataRequestByRequestId(int requestId)
+		public async Task<LiveDataRequest> GetLiveDataRequestByRequestId(int requestId)
 		{
-			return await _liveQueryManagerDbContext.LiveDataRequests.Where(a=> a.RequestId == requestId).ToListAsync();
-		}
-
-		public async Task Insert(LiveDataRequest request)
-		{
-			_liveQueryManagerDbContext.LiveDataRequests.Add(request);
-			await _liveQueryManagerDbContext.SaveChangesAsync();
+			return await _liveQueryManagerDbContext.LiveDataRequests.Where(a => a.RequestId == requestId)
+							.Select(a => new LiveDataRequest
+							{
+								RequestId = a.RequestId,
+								Status = a.Status,
+								Title = a.Title,
+								Description = a.Description,
+								CreatedBy = a.CreatedBy,
+								CreatedOn = a.CreatedOn,
+								AssignedTo = a.AssignedTo
+							}).FirstOrDefaultAsync();
 		}
 	}
 }
