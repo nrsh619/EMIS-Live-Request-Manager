@@ -70,5 +70,31 @@ namespace LiveQueryManager.DataAccess.DA
 								AssignedTo = a.AssignedTo
 							}).FirstOrDefaultAsync();
 		}
-	}
+
+		public async Task DeleteLiveRequest(int requestId)
+        {
+			var liveRequest = _liveQueryManagerDbContext.LiveDataRequests.Where(a => a.RequestId == requestId && !a.IsDeleted).SingleOrDefault();
+
+			if (liveRequest != null)
+			{
+				liveRequest.IsDeleted = true;
+                liveRequest.LastUpdatedOn = DateTime.UtcNow;
+            }
+
+            await _liveQueryManagerDbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateLiveRequestStatus(int requestId, Status currentStatus)
+        {
+            var liveRequest = _liveQueryManagerDbContext.LiveDataRequests.Where(a => a.RequestId == requestId && !a.IsDeleted).SingleOrDefault();
+
+			if (liveRequest != null)
+			{
+				liveRequest.Status = currentStatus;
+                liveRequest.LastUpdatedOn = DateTime.UtcNow;
+            }
+
+            await _liveQueryManagerDbContext.SaveChangesAsync();
+        }
+    }
 }
