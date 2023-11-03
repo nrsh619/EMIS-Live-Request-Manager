@@ -7,6 +7,7 @@ using LiveQueryManager.DataAccess.Context;
 using LiveQueryManager.Models.Enum;
 using LiveQueryManager.Models.Models;
 using LiveQueryManager.Models.Models.InputModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace LiveQueryManager.DataAccess.DA
 {
@@ -49,5 +50,21 @@ namespace LiveQueryManager.DataAccess.DA
 			_liveQueryManagerDbContext.LiveDataRequests.Add(liveRequest);
 			await _liveQueryManagerDbContext.SaveChangesAsync();
 		}
-    }
+
+		public async Task<List<LiveDataRequest>> GetAllLiveDataRequest()
+		{
+			return await _liveQueryManagerDbContext.LiveDataRequests.ToListAsync();
+		}
+
+		public async Task<List<LiveDataRequest>> GetLiveDataRequestByRequestId(int requestId)
+		{
+			return await _liveQueryManagerDbContext.LiveDataRequests.Where(a=> a.RequestId == requestId).ToListAsync();
+		}
+
+		public async Task Insert(LiveDataRequest request)
+		{
+			_liveQueryManagerDbContext.LiveDataRequests.Add(request);
+			await _liveQueryManagerDbContext.SaveChangesAsync();
+		}
+	}
 }

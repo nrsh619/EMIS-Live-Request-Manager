@@ -5,6 +5,7 @@ using LiveQueryManager.Models.Models;
 using LiveQueryManager.Models.Models.InputModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LiveQueryManager.API.Controllers
 {
@@ -17,6 +18,18 @@ namespace LiveQueryManager.API.Controllers
 		public LiveQueryController(LiveRequestDA liveRequestDA)
 		{
 			_liveRequestDA = liveRequestDA;
+		}
+
+		[HttpGet]
+		public async Task<List<LiveDataRequest>> GetAllRequest()
+		{
+			return await _liveRequestDA.GetAllLiveDataRequest();
+		}
+
+		[HttpGet("{requestId}")]
+		public async Task<List<LiveDataRequest>> GetAllRequestByRequestId(int requestId)
+		{
+			return await _liveRequestDA.GetLiveDataRequestByRequestId(requestId);
 		}
 
 		[HttpPost]
