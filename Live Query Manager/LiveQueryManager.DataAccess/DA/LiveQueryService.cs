@@ -8,15 +8,16 @@ using LiveQueryManager.Models.Enum;
 using LiveQueryManager.Models.Models;
 using LiveQueryManager.Models.Models.InputModels;
 using Microsoft.EntityFrameworkCore;
+using LiveQueryManager.Services;
 
 namespace LiveQueryManager.DataAccess.DA
 {
-	public class LiveRequestDA
+	public class LiveQueryService : ILiveQueryService
 	{
 
 		private LiveQueryManagerDbContext _liveQueryManagerDbContext;
 
-        public LiveRequestDA(LiveQueryManagerDbContext liveQueryManagerDbContext)
+        public LiveQueryService(LiveQueryManagerDbContext liveQueryManagerDbContext)
         {
 			_liveQueryManagerDbContext = liveQueryManagerDbContext;
 		}

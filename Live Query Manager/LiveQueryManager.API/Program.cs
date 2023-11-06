@@ -1,7 +1,7 @@
-
 using LiveQueryManager.DataAccess.Context;
 using LiveQueryManager.DataAccess.DA;
 using Microsoft.EntityFrameworkCore;
+using LiveQueryManager.Services;
 
 namespace LiveQueryManager.API
 {
@@ -15,10 +15,10 @@ namespace LiveQueryManager.API
 
 			builder.Services.AddControllers();
 
-			builder.Services.AddEntityFrameworkNpgsql().AddDbContext<LiveQueryManagerDbContext>(optionsAction: opt=>
+			builder.Services.AddEntityFrameworkNpgsql().AddDbContext<LiveQueryManagerDbContext>(optionsAction: opt =>
 			opt.UseNpgsql(builder.Configuration.GetConnectionString("Default"))
 				);
-			builder.Services.AddScoped<LiveRequestDA>();
+			builder.Services.AddScoped<ILiveQueryService, LiveQueryService>();
 
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();

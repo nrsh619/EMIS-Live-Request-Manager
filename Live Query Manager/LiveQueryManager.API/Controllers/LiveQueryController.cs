@@ -1,11 +1,7 @@
-﻿using LiveQueryManager.DataAccess.Context;
-using LiveQueryManager.DataAccess.DA;
-using LiveQueryManager.Models.Enum;
-using LiveQueryManager.Models.Models;
+﻿using LiveQueryManager.Models.Models;
 using LiveQueryManager.Models.Models.InputModels;
-using Microsoft.AspNetCore.Http;
+using LiveQueryManager.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace LiveQueryManager.API.Controllers
 {
@@ -13,36 +9,36 @@ namespace LiveQueryManager.API.Controllers
 	[ApiController]
 	public class LiveQueryController : ControllerBase
 	{
-		private LiveRequestDA _liveRequestDA;
+		private ILiveQueryService _liveQueryService;
 
-		public LiveQueryController(LiveRequestDA liveRequestDA)
+		public LiveQueryController(ILiveQueryService liveQueryService)
 		{
-			_liveRequestDA = liveRequestDA;
+			_liveQueryService = liveQueryService;
 		}
 
 		[HttpGet]
 		public async Task<List<LiveDataRequest>> GetAllRequest()
 		{
-			return await _liveRequestDA.GetAllLiveDataRequest();
+			return await _liveQueryService.GetAllLiveDataRequest();
 		}
 
 		[HttpGet("{requestId}")]
 		public async Task<LiveDataRequest> GetAllRequestByRequestId(int requestId)
 		{
-			return await _liveRequestDA.GetLiveDataRequestByRequestId(requestId);
+			return await _liveQueryService.GetLiveDataRequestByRequestId(requestId);
 		}
 
 		[HttpPost]
 		public async Task CreateLiveRequest(CreateLiveRequestInput input)
 		{
 			//ToDo: need to call S3 to save attachments and retrive S3 path
-			await _liveRequestDA.CreateLiveRequest(input);
+			await _liveQueryService.CreateLiveRequest(input);
 		}
 
 		[HttpPut]
 		public async Task DeleteLiveRequest(int requestId)
 		{
-			await _liveRequestDA.DeleteLiveRequest(requestId);
+			await _liveQueryService.DeleteLiveRequest(requestId);
 		}
 
 		//[HttpPut]

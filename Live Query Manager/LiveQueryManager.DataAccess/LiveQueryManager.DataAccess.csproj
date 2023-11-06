@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LiveQueryManager.Models\LiveQueryManager.Models.csproj" />
+    <ProjectReference Include="..\Services\LiveQueryManager.Services.csproj" />
   </ItemGroup>
 
 </Project>
