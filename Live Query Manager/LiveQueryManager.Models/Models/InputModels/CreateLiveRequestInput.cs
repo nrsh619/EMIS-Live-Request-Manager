@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LiveQueryManager.Models.Models.InputModels
+﻿namespace LiveQueryManager.Models.Models.InputModels
 {
 	public class CreateLiveRequestInput
 	{

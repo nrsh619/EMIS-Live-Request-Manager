@@ -41,6 +41,13 @@ namespace LiveQueryManager.API.Controllers
 			await _liveQueryService.DeleteLiveRequest(requestId);
 		}
 
+		[HttpPost]
+		[Route("UpdateLiveDataRequest")]
+		public async Task UpdateLiveRequest(UpdateLiveRequestInput liveDataRequest)
+		{
+			await _liveRequestDA.UpdateLiveRequest(liveDataRequest);
+		}
+
 		//[HttpPut]
 		//public async Task UpdateLiveRequestStatus(int requestId, Status currentStatus)
 		//{
