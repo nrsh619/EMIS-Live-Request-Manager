@@ -16,6 +16,7 @@ namespace LiveQueryManager.Services
 		Task<LiveDataRequest> GetLiveDataRequestByRequestId(int requestId);
 		Task<List<LiveDataRequest>> GetAllLiveDataRequest();
 		Task CreateLiveRequest(CreateLiveRequestInput input);
+		Task UpdateLiveRequest(UpdateLiveRequestInput input);
 
 	}
 }

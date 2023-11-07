@@ -45,7 +45,7 @@ namespace LiveQueryManager.API.Controllers
 		[Route("UpdateLiveDataRequest")]
 		public async Task UpdateLiveRequest(UpdateLiveRequestInput liveDataRequest)
 		{
-			await _liveRequestDA.UpdateLiveRequest(liveDataRequest);
+			await _liveQueryService.UpdateLiveRequest(liveDataRequest);
 		}
 
 		//[HttpPut]
