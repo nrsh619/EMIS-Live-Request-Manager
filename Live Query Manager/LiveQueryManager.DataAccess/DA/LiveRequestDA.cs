@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LiveQueryManager.DataAccess.Context;
+﻿using LiveQueryManager.DataAccess.Context;
 using LiveQueryManager.Models.Enum;
 using LiveQueryManager.Models.Models;
 using LiveQueryManager.Models.Models.InputModels;
@@ -16,8 +11,8 @@ namespace LiveQueryManager.DataAccess.DA
 
 		private LiveQueryManagerDbContext _liveQueryManagerDbContext;
 
-        public LiveRequestDA(LiveQueryManagerDbContext liveQueryManagerDbContext)
-        {
+		public LiveRequestDA(LiveQueryManagerDbContext liveQueryManagerDbContext)
+		{
 			_liveQueryManagerDbContext = liveQueryManagerDbContext;
 		}
 
@@ -51,50 +46,93 @@ namespace LiveQueryManager.DataAccess.DA
 			await _liveQueryManagerDbContext.SaveChangesAsync();
 		}
 
+		public async Task UpdateLiveRequest(UpdateLiveRequestInput input)
+		{
+			var newAttachments = new List<Attachment>();			
+
+			var existingRequest = _liveQueryManagerDbContext.LiveDataRequests.SingleOrDefault(a => a.RequestId == input.RequestId);
+
+			if (existingRequest != null)
+			{
+				existingRequest.RequestId = input.RequestId;
+				existingRequest.LastUpdatedOn = DateTime.UtcNow;
+				existingRequest.Title = input.Title;
+				existingRequest.Description = input.Description;
+				existingRequest.Status = (Status)input.StatusTypeId;
+				existingRequest.Attachments = newAttachments;
+				existingRequest.AssignedTo = input.AssignedTo;
+
+				foreach (var attachmentInput in input.Attachments)
+				{
+					var attachmentRequest = new Attachment
+					{
+						Path = attachmentInput.Path,
+						Type = (AttachmentType)attachmentInput.TypeId
+					};
+					if (attachmentInput.Id.HasValue) attachmentRequest.Id = attachmentInput.Id.Value;
+					newAttachments.Add(attachmentRequest);
+				}
+
+				await _liveQueryManagerDbContext.SaveChangesAsync();
+			}
+		}
+
 		public async Task<List<LiveDataRequest>> GetAllLiveDataRequest()
 		{
-			return await _liveQueryManagerDbContext.LiveDataRequests.Where(a=> !a.IsDeleted).ToListAsync();
+			return await _liveQueryManagerDbContext.LiveDataRequests.Where(a => !a.IsDeleted).ToListAsync();
 		}
 
 		public async Task<LiveDataRequest> GetLiveDataRequestByRequestId(int requestId)
 		{
-			return await _liveQueryManagerDbContext.LiveDataRequests.Where(a => a.RequestId == requestId && !a.IsDeleted)
-							.Select(a => new LiveDataRequest
-							{
-								RequestId = a.RequestId,
-								Status = a.Status,
-								Title = a.Title,
-								Description = a.Description,
-								CreatedBy = a.CreatedBy,
-								CreatedOn = a.CreatedOn,
-								AssignedTo = a.AssignedTo
-							}).FirstOrDefaultAsync();
+			var request = await _liveQueryManagerDbContext.LiveDataRequests
+				.Include(a => a.Attachments)
+				.Where(a => a.RequestId == requestId && !a.IsDeleted).FirstOrDefaultAsync();
+
+			if (request == null) return null;
+
+			List<AttachmentInput> newAttachments = new List<AttachmentInput>();
+			foreach (var item in request.Attachments)
+			{
+				newAttachments.Add(new AttachmentInput { Id = item.Id, Path = item.Path, TypeId = (int)item.Type });
+			}
+
+			UpdateLiveRequestInput model = new UpdateLiveRequestInput
+			{
+				RequestId = request.RequestId,
+				Title = request.Title,
+				Description = request.Description,
+				StatusTypeId = (int)request.Status,
+				AssignedTo = request.AssignedTo,
+				Attachments = newAttachments
+			};
+
+			return request;
 		}
 
 		public async Task DeleteLiveRequest(int requestId)
-        {
+		{
 			var liveRequest = _liveQueryManagerDbContext.LiveDataRequests.Where(a => a.RequestId == requestId && !a.IsDeleted).SingleOrDefault();
 
 			if (liveRequest != null)
 			{
 				liveRequest.IsDeleted = true;
-                liveRequest.LastUpdatedOn = DateTime.UtcNow;
-            }
+				liveRequest.LastUpdatedOn = DateTime.UtcNow;
+			}
 
-            await _liveQueryManagerDbContext.SaveChangesAsync();
-        }
+			await _liveQueryManagerDbContext.SaveChangesAsync();
+		}
 
-        public async Task UpdateLiveRequestStatus(int requestId, Status currentStatus)
-        {
-            var liveRequest = _liveQueryManagerDbContext.LiveDataRequests.Where(a => a.RequestId == requestId && !a.IsDeleted).SingleOrDefault();
+		public async Task UpdateLiveRequestStatus(int requestId, Status currentStatus)
+		{
+			var liveRequest = _liveQueryManagerDbContext.LiveDataRequests.Where(a => a.RequestId == requestId && !a.IsDeleted).SingleOrDefault();
 
 			if (liveRequest != null)
 			{
 				liveRequest.Status = currentStatus;
-                liveRequest.LastUpdatedOn = DateTime.UtcNow;
-            }
+				liveRequest.LastUpdatedOn = DateTime.UtcNow;
+			}
 
-            await _liveQueryManagerDbContext.SaveChangesAsync();
-        }
-    }
+			await _liveQueryManagerDbContext.SaveChangesAsync();
+		}
+	}
 }
