@@ -14,3 +14,5 @@
 /Live Query Manager/LiveQueryManager.DataAccess/obj
 /Live Query Manager/Services/obj
 /Live Query Manager/Services/bin/Debug/net7.0
+/Live Query Manager/LiveQueryManager.AWS/bin/Debug/net7.0
+/Live Query Manager/LiveQueryManager.AWS/obj

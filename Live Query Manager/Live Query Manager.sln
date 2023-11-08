@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveQueryManager.Models", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveQueryManager.DataAccess", "LiveQueryManager.DataAccess\LiveQueryManager.DataAccess.csproj", "{0D561F91-DC68-46C4-B444-8897622BC724}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveQueryManager.Services", "Services\LiveQueryManager.Services.csproj", "{6584B623-D505-4331-B0B5-20AB65EC6E1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveQueryManager.Services", "Services\LiveQueryManager.Services.csproj", "{6584B623-D505-4331-B0B5-20AB65EC6E1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveQueryManager.AWS", "LiveQueryManager.AWS\LiveQueryManager.AWS.csproj", "{42B73A0A-0877-4196-A0E1-4026953D858E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6584B623-D505-4331-B0B5-20AB65EC6E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6584B623-D505-4331-B0B5-20AB65EC6E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6584B623-D505-4331-B0B5-20AB65EC6E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42B73A0A-0877-4196-A0E1-4026953D858E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B73A0A-0877-4196-A0E1-4026953D858E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B73A0A-0877-4196-A0E1-4026953D858E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B73A0A-0877-4196-A0E1-4026953D858E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

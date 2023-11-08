@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LiveQueryManager.AWS\LiveQueryManager.AWS.csproj" />
     <ProjectReference Include="..\LiveQueryManager.DataAccess\LiveQueryManager.DataAccess.csproj" />
     <ProjectReference Include="..\LiveQueryManager.Models\LiveQueryManager.Models.csproj" />
     <ProjectReference Include="..\Services\LiveQueryManager.Services.csproj" />

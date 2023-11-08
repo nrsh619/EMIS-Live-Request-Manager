@@ -31,7 +31,6 @@ namespace LiveQueryManager.API.Controllers
 		[HttpPost]
 		public async Task CreateLiveRequest(CreateLiveRequestInput input)
 		{
-			//ToDo: need to call S3 to save attachments and retrive S3 path
 			await _liveQueryService.CreateLiveRequest(input);
 		}
 

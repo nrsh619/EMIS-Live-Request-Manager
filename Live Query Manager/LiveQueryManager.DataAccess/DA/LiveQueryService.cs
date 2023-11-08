@@ -12,8 +12,8 @@ namespace LiveQueryManager.DataAccess.DA
 
 		private LiveQueryManagerDbContext _liveQueryManagerDbContext;
 
-        public LiveQueryService(LiveQueryManagerDbContext liveQueryManagerDbContext)
-        {
+		public LiveQueryService(LiveQueryManagerDbContext liveQueryManagerDbContext)
+		{
 			_liveQueryManagerDbContext = liveQueryManagerDbContext;
 		}
 
@@ -49,7 +49,7 @@ namespace LiveQueryManager.DataAccess.DA
 
 		public async Task UpdateLiveRequest(UpdateLiveRequestInput input)
 		{
-			var newAttachments = new List<Attachment>();			
+			var newAttachments = new List<Attachment>();
 
 			var existingRequest = _liveQueryManagerDbContext.LiveDataRequests.SingleOrDefault(a => a.RequestId == input.RequestId);
 
