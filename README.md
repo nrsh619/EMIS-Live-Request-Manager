@@ -1,9 +1,9 @@
 # EMIS-Live-Request-Manager
 Demo project for AWS Hands- on
 
-##Prerequisites
+## Prerequisites
 
-###Configure AWS
+### Configure AWS
 
 To configure Aws update below values in both appSettings.json and appsettings.Development.json
 
